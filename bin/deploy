@@ -1,7 +1,6 @@
 #!/bin/bash
 
 set -euo pipefail
-S3Bucket=john-lambda-deploy
 OUTPUT_DIR=dist
 CURRENT_DIR=$(pwd)
 ROOT_DIR="$( dirname "${BASH_SOURCE[0]}" )"/..
@@ -19,8 +18,8 @@ echo "zipping source code.."
 zip -rq $OUTPUT_DIR/dist-$APP_VERSION.zip src node_modules package.json
 
 echo "uploading source code to s3.."
-echo $OUTPUT_DIR
-aws s3 region cp $OUTPUT_DIR/dist-$APP_VERSION.zip s3://$S3_BUCKET/dist-$APP_VERSION.zip
+echo $OUTPUT_DIR/dist-$APP_VERSION.zip
+aws s3 cp $OUTPUT_DIR/dist-$APP_VERSION.zip s3://$S3_BUCKET/dist-$APP_VERSION.zip
 
 
 echo "deploying application.."
