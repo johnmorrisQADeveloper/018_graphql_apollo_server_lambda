@@ -1,8 +1,22 @@
-'use strict'
+const { ApolloServer, gql } = require('apollo-server-lambda')
 
-exports.handler = async (event, context) => {
-  console.log(JSON.stringify('Event: event'))
-  return {
-    body: 'Hello from Lambda'
+const typeDefs = gql`
+  type Query {
+    user: User
+  }
+
+  type User {
+    id: ID
+    name: String
+  }
+`
+
+const resolvers = {
+  Query: {
+    user: () => ({ id: 123, name: 'John Doe' })
   }
 }
+
+const server = new ApolloServer({ typeDefs, resolvers })
+
+exports.handler = server.createHandler()
