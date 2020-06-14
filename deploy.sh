@@ -17,3 +17,11 @@ aws cloudformation deploy \
   --region eu-west-2 \
   --parameter-overrides BucketName=$S3Bucket Version=latest \
   --capabilities CAPABILITY_IAM
+
+aws cloudformation describe-stacks \
+--stack-name=apollo-server-lambda-nodejs \
+--region eu-west-2 \
+--query "Stacks[0].Outputs[?OutputKey=='ApiUrl'].OutputValue" \
+--output text
+
+curl -d '{}' https://fzmx17r87f.execute-api.eu-west-2.amazonaws.com/v1/graphql
