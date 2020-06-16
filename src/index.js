@@ -6,9 +6,19 @@ const resolvers = require('./graphql/resolvers')
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  context: ({ context, event }) => {
-    context.callbackWaitsForEmptyEventLoop = false
-  }
+  playground: true,
+  introspection: true,
+  context: ({ event, context }) => ({
+    headers: event.headers,
+    functionName: context.functionName,
+    event,
+    context
+  })
 })
 
-exports.handler = server.createHandler()
+exports.handler = server.createHandler({
+  cors: {
+    origin: '*',
+    credentials: true
+  }
+})
