@@ -99,3 +99,19 @@ mutation {
   }
 }
 ```
+
+## delete an existing comment
+```
+mutation {
+  deleteComment(postId: "5ee904f1a05f82000db37f3b", commentId: "5ee91ae128d212000cb87c1f") {
+    id
+    body
+    createdAt
+    comments {
+      id
+      createdAt
+      body
+    }
+  }
+}
+```
