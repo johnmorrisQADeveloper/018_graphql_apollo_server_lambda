@@ -115,3 +115,14 @@ mutation {
   }
 }
 ```
+
+## like a post
+```
+mutation {
+  likePost(postId: "5ee904f1a05f82000db37f3b") {
+    id
+    likes {id username}
+    body
+  }
+}
+```
