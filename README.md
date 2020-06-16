@@ -35,3 +35,16 @@ mutation {
   }
 }
 ```
+
+## validate login user
+```
+mutation {
+  login(username: "s" password: "s") {
+    id
+    email
+    token
+    username
+    createdAt
+  }
+}
+```
