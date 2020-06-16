@@ -60,3 +60,17 @@ query {
     }
 }
 ```
+
+## create a post
+```
+mutation {
+  createPost(body: "best post ever ever er er r r r") {
+    id
+    body
+    createdAt
+    username
+  }
+}
+Header:
+Authorization Bearer eyJhbGciOiJIU
+```
