@@ -74,3 +74,12 @@ mutation {
 Header:
 Authorization Bearer eyJhbGciOiJIU
 ```
+
+## delete post
+```
+mutation {
+  deletePost(postId: "5ee8fa563b5fff000d596c46") 
+}
+Header:
+Authorization Bearer eyJhbGciOiJIU
+```

@@ -1,5 +1,6 @@
 const Post = require('../../models/Post')
 const checkAuth = require('../../util/check-auth')
+const { AuthenticationError } = require('apollo-server-lambda')
 
 module.exports = {
   Query: {
@@ -36,6 +37,20 @@ module.exports = {
       })
       const post = await newPost.save()
       return post
+    },
+    async deletePost (_, { postId }, context) {
+      const user = checkAuth(context)
+      try {
+        const post = await Post.findById(postId)
+        if (user.username === post.username) {
+          await post.delete()
+          return `post deleted ${postId}`
+        } else {
+          throw new AuthenticationError('action not allowed')
+        }
+      } catch (error) {
+        throw new Error(error)
+      }
     }
   }
 }
