@@ -18,7 +18,7 @@ http://localhost:3000/graphql
 }
 ```
 
-## create a user
+## Create a user
 ```
 mutation {
   register(registerInput: {
