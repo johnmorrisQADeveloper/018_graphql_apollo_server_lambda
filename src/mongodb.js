@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-mongoose.Promise = global.Promise
 
 const url = 'mongodb+srv://john:john@cluster0-lom0m.mongodb.net/merng?retryWrites=true&w=majority'
 
