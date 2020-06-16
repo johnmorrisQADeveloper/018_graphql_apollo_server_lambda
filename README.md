@@ -83,3 +83,19 @@ mutation {
 Header:
 Authorization Bearer eyJhbGciOiJIU
 ```
+
+## add a comment to an existing post
+```
+mutation {
+  createComment(postId: "5ee904f1a05f82000db37f3b", body: "adding a third comment ") {
+    id
+    body
+    comments {
+      id
+      createdAt
+      username
+      body
+    }
+  }
+}
+```
