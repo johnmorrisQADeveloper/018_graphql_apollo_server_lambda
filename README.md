@@ -48,3 +48,15 @@ mutation {
   }
 }
 ```
+
+## get a single post
+```
+query {
+  getPost(postId: "5ee868a98a9dceb1209db78a") {
+    id
+    body
+    createdAt
+    username
+    }
+}
+```
