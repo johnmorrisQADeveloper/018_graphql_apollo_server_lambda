@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
+const { MONGO_DB } = require('./config')
 
-const url = 'mongodb+srv://john:john@cluster0-lom0m.mongodb.net/merng?retryWrites=true&w=majority'
-
-mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
-mongoose.connection.once('open', () => console.log(`Connected to mongo at ${url}`))
+mongoose.connect(MONGO_DB.toString(), { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connection.once('open', () => console.log(`Connected to mongodb at ${MONGO_DB}`))

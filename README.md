@@ -17,3 +17,21 @@ http://localhost:3000/graphql
   }
 }
 ```
+
+## create a user
+```
+mutation {
+  register(registerInput: {
+    username: "user1"
+    password: "user1"
+    confirmPassword: "user1"
+    email: "user1@mail.com"
+  }){
+    id
+    email
+    token
+    username
+    createdAt
+  }
+}
+```
