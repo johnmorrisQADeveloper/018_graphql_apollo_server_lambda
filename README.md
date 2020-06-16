@@ -1,6 +1,6 @@
 # Graphql via Apollo Server Lambda - mongoose atlas
 
-# Run the app locally
+## Run the app locally
 ```
 yarn install
 yarn dev
