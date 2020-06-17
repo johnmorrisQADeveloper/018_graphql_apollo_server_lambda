@@ -14,7 +14,7 @@ export default {
   async mounted() {
     var result = await axios({
       method: "POST",
-      url: "http://localhost:3000/graphql",
+      url: "https://tul8x7p1cg.execute-api.eu-west-2.amazonaws.com/v1/graphql",
       data: {
         query: `
                   {
