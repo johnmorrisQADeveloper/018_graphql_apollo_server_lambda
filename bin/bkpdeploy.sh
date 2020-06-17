@@ -4,7 +4,7 @@ S3Bucket=john-lambda-deploy
 echo "create a AWS S3 Bucket"
 aws s3 --region eu-west-2 mb s3://$S3Bucket
 
-zip -rq dist-latest.zip src package.json 
+zip -rq dist-latest.zip . package.json 
 zipinfo dist-latest.zip
 
 aws s3 cp dist-latest.zip s3://$S3Bucket/dist-latest.zip
