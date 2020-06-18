@@ -1,7 +1,11 @@
 <template>
   <div>
     <h5>Hi John</h5>
-    <p>{{keys.getPosts}}</p>
+    <ul>
+      <li v-for="(post, index) in keys.getPosts" :key="index">
+        {{post}}
+      </li>
+    </ul>
   </div>
 </template>
 
