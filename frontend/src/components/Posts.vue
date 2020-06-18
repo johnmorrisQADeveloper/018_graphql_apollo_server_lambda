@@ -40,11 +40,12 @@
               </v-list-item-content>
 
               <v-row align="center" justify="end">
-                <v-icon class="mr-1">mdi-heart</v-icon>
-                <span class="subheading mr-2">{{post.likeCount}}</span>
-                <span class="mr-1">·</span>
-                <v-icon class="mr-1">mdi-comment</v-icon>
-                <span class="subheading">{{post.commentCount}}</span>
+                <v-btn class="ma-2" tile outlined color="pink">
+                  <v-icon left>mdi-heart</v-icon>{{post.likeCount}}
+                </v-btn>
+                <v-btn class="ma-2" tile outlined color="success">
+                  <v-icon left>mdi-comment</v-icon>{{post.commentCount}}
+                </v-btn>
               </v-row>
             </v-list-item>
           </v-card-actions>
