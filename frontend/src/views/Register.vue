@@ -8,17 +8,7 @@
         <v-card-title class="title font-weight-regular">Sign up</v-card-title>
       </v-toolbar>
       <v-form ref="form" v-model="form" class="pa-4 pt-6">
-        <v-text-field
-          v-model="password"
-          :rules="[rules.password, rules.length(6)]"
-          filled
-          color="deep-purple"
-          counter="6"
-          label="Password"
-          style="min-height: 96px"
-          type="password"
-        ></v-text-field>
-        <v-text-field v-model="phone" filled color="deep-purple" label="Phone number"></v-text-field>
+        <v-text-field v-model="username" filled color="deep-purple" label="User Name"></v-text-field>
         <v-text-field
           v-model="email"
           :rules="[rules.email]"
@@ -27,7 +17,26 @@
           label="Email address"
           type="email"
         ></v-text-field>
-        <v-textarea v-model="bio" auto-grow filled color="deep-purple" label="Bio" rows="1"></v-textarea>
+        <v-text-field
+          v-model="password"
+          :rules="[rules.password, rules.length(3)]"
+          filled
+          color="deep-purple"
+          counter="3"
+          label="Password"
+          style="min-height: 96px"
+          type="password"
+        ></v-text-field>
+        <v-text-field
+          v-model="cpassword"
+          :rules="[rules.cpassword, rules.length(3)]"
+          filled
+          color="deep-purple"
+          counter="3"
+          label="Confirm Password"
+          style="min-height: 96px"
+          type="password"
+        ></v-text-field>
         <v-checkbox v-model="agreement" :rules="[rules.required]" color="deep-purple">
           <template v-slot:label>
             I agree to the&nbsp;
@@ -77,14 +86,13 @@ export default {
   name: 'Register',
   data: () => ({
     agreement: false,
-    bio:
-      'Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts',
+    bio: 'Far far, there live the blind texts',
     dialog: false,
     email: undefined,
     form: false,
     isLoading: false,
     password: undefined,
-    phone: undefined,
+    username: undefined,
     rules: {
       email: v => (v || '').match(/@/) || 'Please enter a valid email',
       length: len => v =>
