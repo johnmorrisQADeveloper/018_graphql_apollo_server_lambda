@@ -4,7 +4,7 @@ const axios = require("axios");
   console.log('Hello World!')
   var result = await axios({
     method: 'POST',
-    url: 'https://tul8x7p1cg.execute-api.eu-west-2.amazonaws.com/v1/graphql',
+    url: 'http://127.0.0.1:3000/graphql',
     data: {
       query: `
                 {

@@ -1,5 +1,8 @@
 <template>
-  <div class="hello">hi john</div>
+  <div>
+    <h5>Hi John</h5>
+    <p>{{keys.getPosts}}</p>
+  </div>
 </template>
 
 <script>
@@ -8,13 +11,13 @@ export default {
   name: "HelloWorld",
   data() {
     return {
-      keys: ""
+      keys: []
     };
   },
   async mounted() {
     var result = await axios({
       method: "POST",
-      url: "https://tul8x7p1cg.execute-api.eu-west-2.amazonaws.com/v1/graphql",
+      url: "http://127.0.0.1:3000/graphql",
       data: {
         query: `
                   {
@@ -27,8 +30,9 @@ export default {
                   }
                 `
       }
-    })
-    console.log(result.data)
+    });
+    console.log(JSON.stringify(result.data.data, null, 1));
+    this.keys = result.data.data;
   }
 };
 </script>
