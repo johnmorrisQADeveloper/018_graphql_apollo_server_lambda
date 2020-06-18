@@ -7,6 +7,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 import router from './router'
 import store from './store'
 import App from './App.vue'
+import vuetify from './plugins/vuetify'
 
 const httpLink = createHttpLink({
   uri: 'http://localhost:3000/graphql'
@@ -32,5 +33,6 @@ new Vue({
   router,
   store,
   apolloProvider,
+  vuetify,
   render: h => h(App)
 }).$mount('#app')

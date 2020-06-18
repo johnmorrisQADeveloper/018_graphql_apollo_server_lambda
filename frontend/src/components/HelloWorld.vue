@@ -1,7 +1,9 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-  </div>
+  <v-container>
+    <v-row class="text-center">
+      <h1>{{ msg }}</h1>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
@@ -12,6 +14,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-</style>

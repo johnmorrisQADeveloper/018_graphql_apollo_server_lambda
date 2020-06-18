@@ -2,7 +2,9 @@
   <div>
     <h1>Apolo Client</h1>
     <ul>
-      <li v-for="(post, index) in getPosts" :key="index">{{post}}</li>
+      <li v-for="(post, index) in getPosts" :key="index">
+        {{post}}
+      </li>
     </ul>
   </div>
 </template>
