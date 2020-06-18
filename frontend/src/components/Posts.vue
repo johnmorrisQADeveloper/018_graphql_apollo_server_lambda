@@ -12,9 +12,17 @@
           v-for="(post, index) in getPosts"
           :key="index"
         >
-          <v-card-title>
-            <v-icon large left>mdi-twitter</v-icon>
-            <span class="title font-weight-light">{{ dateSince(post.createdAt) }}</span>
+          <v-card-title color="#26c6da">
+            <v-list color="#26c6da">
+              <v-list-item link :to="post.id">
+                <v-list-item-action>
+                  <v-icon>mdi-twitter</v-icon>
+                </v-list-item-action>
+                <v-list-item-content>
+                  <v-list-item-title>{{ dateSince(post.createdAt) }}</v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+            </v-list>
           </v-card-title>
           <v-card-text class="headline font-weight-bold">{{post.body}}</v-card-text>
 
