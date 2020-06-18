@@ -28,4 +28,3 @@ Globals:
      AllowOrigin: "'*'"
  Function:
     Runtime: nodejs12.x
-                
