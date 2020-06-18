@@ -1,21 +1,29 @@
 <template>
   <div>
-    <h5>Hi John</h5>
-    <ul>
-      <li v-for="(post, index) in keys.getPosts" :key="index">
-        {{post}}
-      </li>
-    </ul>
+    <div>
+      <h1>Axios</h1>
+      <ul>
+        <li v-for="(post, index) in keys.getPosts" :key="index">{{post}}</li>
+      </ul>
+    </div>
+    <div>
+      <h1>Apolo Client</h1>
+      <ul>
+        <li v-for="(post, index) in getPosts" :key="index">{{post}}</li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import { ALL_POSTS_QUERY } from "../constants/graphql";
 export default {
   name: "HelloWorld",
   data() {
     return {
-      keys: []
+      keys: [],
+      getPosts: []
     };
   },
   async mounted() {
@@ -37,24 +45,15 @@ export default {
     });
     console.log(JSON.stringify(result.data.data, null, 1));
     this.keys = result.data.data;
+  },
+  apollo: {
+    getPosts: {
+      query: ALL_POSTS_QUERY
+    }
   }
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
 </style>
