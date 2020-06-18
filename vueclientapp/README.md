@@ -20,5 +20,7 @@ npm run build
 npm run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### packages
+```
+npm i apollo-boost apollo-cache-inmemory apollo-client apollo-link apollo-link-http graphql graphql-tag vue-apollo
+```
