@@ -5,9 +5,6 @@
   "license": "MIT",
   "scripts": {
     "lint": "npx eslint *.js ./*/*.js --fix",
-    "deploy": "S3_BUCKET=john-lambda-deploy ./bin/deploy",
-    "dev": "sam local start-api --template-file cloudformation.yml",
-    "localapi": "curl -d '{}' http://localhost:3000/graphql",
     "samlocal": "sam local start-api --template-file template.yaml" 
   },
   "dependencies": {
