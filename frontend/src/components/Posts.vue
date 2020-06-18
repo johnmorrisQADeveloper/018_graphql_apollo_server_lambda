@@ -31,7 +31,7 @@
               <v-list-item-avatar color="grey darken-3">
                 <v-img
                   class="elevation-6"
-                  src="https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Prescription02&hairColor=Black&facialHairType=Blank&clotheType=Hoodie&clotheColor=White&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Default&skinColor=Light"
+                  src="https://robohash.org/034b521c33ac11292f7cd764e1968e34?set=set4&bgset=bg1&size=400x400"
                 ></v-img>
               </v-list-item-avatar>
 
