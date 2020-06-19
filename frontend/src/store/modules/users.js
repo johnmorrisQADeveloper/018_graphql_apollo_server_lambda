@@ -1,24 +1,25 @@
-
-import axios from 'axios'
+import graphqlClient from '../../utils/apolloClient'
+import { ALL_POSTS_QUERY } from '../../constants/graphql'
 
 const state = {
   posts: []
 }
 
 const getters = {
-  getUserInfo: (state) => state.userInfo,
   getPosts: (state) => state.posts
 }
 
 const actions = {
   async fetchPosts ({ commit }) {
-    const response = await axios.get('http://localhost:3000/todos')
+    const response = await graphqlClient.query({
+      query: ALL_POSTS_QUERY
+    })
     commit('SET_POSTS', response.data)
   }
 }
 
 const mutations = {
-  SET_TODOS: (state, todos) => (state.todos = todos)
+  SET_POSTS: (state, posts) => (state.posts = posts)
 }
 
 export default {

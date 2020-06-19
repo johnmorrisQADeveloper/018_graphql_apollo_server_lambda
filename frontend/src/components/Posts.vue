@@ -4,7 +4,7 @@
       <h4>Recent Posts</h4>
     </v-row>
     <v-row no-gutters>
-      <v-col v-for="(post, index) in getPosts" :key="index" cols="12" sm="4">
+      <v-col v-for="(post, index) in getPosts.getPosts" :key="index" cols="12" sm="4">
         <v-card style="width: 95%; height: 95%"  class="px-2 ma-2" color="#26c6da" dark>
           <v-card-title color="#26c6da">
             <v-list color="#26c6da">
@@ -52,25 +52,22 @@
 </template>
 
 <script>
-import { ALL_POSTS_QUERY } from '../constants/graphql'
+import { mapGetters, mapActions } from 'vuex'
 import moment from 'moment'
 
 export default {
   name: 'Posts',
-  data () {
-    return {
-      getPosts: []
-    }
-  },
-  apollo: {
-    getPosts: {
-      query: ALL_POSTS_QUERY
-    }
-  },
   methods: {
+    ...mapActions(['fetchPosts']),
     dateSince (createdAt) {
       return moment(createdAt).fromNow(true)
     }
+  },
+  computed: {
+    ...mapGetters(['getPosts'])
+  },
+  async created () {
+    await this.fetchPosts()
   }
 }
 </script>

@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 
 export const ALL_POSTS_QUERY = gql`
-  query AllPostsQuery {
+  query {
     getPosts {
       id body commentCount username createdAt likeCount
     }
@@ -9,7 +9,7 @@ export const ALL_POSTS_QUERY = gql`
 `
 
 export const CREATE_USER_MUTATION = gql`
-  mutation registerUserMutation(
+  mutation (
     $username: String!, 
     $password: String!, 
     $confirmPassword: String!,
@@ -27,7 +27,7 @@ export const CREATE_USER_MUTATION = gql`
 `
 
 export const LOGIN_USER_MUTATION = gql`
-  mutation loginUserMutation(
+  mutation (
     $username: String!, 
     $password: String! ) 
     {
