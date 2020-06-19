@@ -5,7 +5,7 @@
     </v-row>
     <v-row no-gutters>
       <v-col v-for="(post, index) in getPosts" :key="index" cols="12" sm="4">
-        <v-card style="width: 70%" class="px-2 ma-2" color="#26c6da" dark>
+        <v-card style="width: 95%; height: 95%"  class="px-2 ma-2" color="#26c6da" dark>
           <v-card-title color="#26c6da">
             <v-list color="#26c6da">
               <v-list-item link :to="post.id">
