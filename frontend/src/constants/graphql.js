@@ -10,18 +10,18 @@ export const ALL_POSTS_QUERY = gql`
 
 export const CREATE_USER_MUTATION = gql`
   mutation registerUserMutation(
-    $username: String!
-    $password: String!
-    $confirmPassword: String!
-    $email: String!
-  ) {
+    $username: String!, 
+    $password: String!, 
+    $confirmPassword: String!,
+    $email: String! ) 
+    {
     register(
       username: $username,
       password: $password,
-      password: $password,
+      confirmPassword: $confirmPassword,
       email: $email
-    ) {
+    ){
       id email token username createdAt
-    }
+     }
   }
 `

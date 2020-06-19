@@ -3,7 +3,7 @@
     <v-form ref="form" v-model="valid" lazy-validation>
       <v-text-field v-model="username" label="User Name" required></v-text-field>
       <v-text-field v-model="password" label="Password" required></v-text-field>
-      <v-text-field v-model="confirmPasword" label="Confirm Pasword" required></v-text-field>
+      <v-text-field v-model="confirmPassword" label="Confirm Pasword" required></v-text-field>
       <v-text-field v-model="email" label="E-mail" required></v-text-field>
 
       <v-btn color="error" class="mr-4" @click="reset">Reset Form</v-btn>
@@ -13,35 +13,37 @@
 </template>
 
 <script>
-// import { CREATE_USER_MUTATION } from "../constants/graphql";
+import { CREATE_USER_MUTATION } from '../constants/graphql'
 export default {
   name: 'Register',
   data: () => ({
     valid: false,
     username: '',
     password: '',
-    confirmPasword: '',
+    confirmPassword: '',
     email: ''
   }),
   methods: {
     reset () {
       this.username = ''
       this.password = ''
-      this.confirmPasword = ''
+      this.confirmPassword = ''
       this.email = ''
     },
-    // createLink() {
-    //   const { description, url } = this.$data;
-    //   this.$apollo.mutate({
-    //     mutation: CREATE_LINK_MUTATION,
-    //     variables: {
-    //       description,
-    //       url
-    //     }
-    //   });
-    // },
-    submit () {
-      // createLink()
+    createUser () {
+      const { username, password, confirmPassword, email } = this.$data
+      this.$apollo.mutate({
+        mutation: CREATE_USER_MUTATION,
+        variables: {
+          username,
+          password,
+          confirmPassword,
+          email
+        }
+      })
+    },
+    async submit () {
+      await this.createUser()
       this.reset()
     }
   }

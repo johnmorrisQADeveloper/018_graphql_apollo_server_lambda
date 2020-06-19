@@ -37,8 +37,9 @@ module.exports = {
         token
       }
     },
-    async register (parent, { registerInput: { username, email, password, confirmPassword } }, context, info) {
+    async register (parent, { username, email, password, confirmPassword }, context, info) {
       // DONE: validate user data
+      console.log(username, email, password, confirmPassword)
       const { valid, errors } = validateRegisterInput(username, email, password, confirmPassword)
       if (!valid) {
         throw new UserInputError('Errors', { errors })
