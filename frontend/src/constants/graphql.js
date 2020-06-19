@@ -25,3 +25,17 @@ export const CREATE_USER_MUTATION = gql`
      }
   }
 `
+
+export const LOGIN_USER_MUTATION = gql`
+  mutation loginUserMutation(
+    $username: String!, 
+    $password: String! ) 
+    {
+    login(
+      username: $username,
+      password: $password
+    ){
+      id email token username createdAt
+     }
+  }
+`
