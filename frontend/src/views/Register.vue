@@ -59,6 +59,7 @@
           class="white--text"
           color="deep-purple accent-4"
           depressed
+          @click="register()"
         >Submit</v-btn>
       </v-card-actions>
       <v-dialog v-model="dialog" absolute max-width="400" persistent>
@@ -82,6 +83,7 @@
 </template>
 
 <script>
+import { CREATE_USER_MUTATION } from '../constants/graphql'
 export default {
   name: 'Register',
   data: () => ({
@@ -102,7 +104,21 @@ export default {
         'Password must contain an upper case letter, a numeric character, and a special character',
       required: v => !!v || 'This field is required'
     }
-  })
+  }),
+  methods: {
+    register () {
+      const { username, password, cpassword, email } = this.$data
+      this.$apollo.mutate({
+        mutation: CREATE_USER_MUTATION,
+        variables: {
+          username,
+          password,
+          cpassword,
+          email
+        }
+      })
+    }
+  }
 }
 </script>
 
