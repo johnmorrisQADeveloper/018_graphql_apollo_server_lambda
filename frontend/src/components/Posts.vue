@@ -4,14 +4,8 @@
       <h4>Recent Posts</h4>
     </v-row>
     <v-row no-gutters>
-      <v-col v-for="n in 3" :key="n" cols="12" sm="4">
-        <v-card
-          class="px-2 ma-2"
-          color="#26c6da"
-          dark
-          v-for="(post, index) in getPosts"
-          :key="index"
-        >
+      <v-col v-for="(post, index) in getPosts" :key="index" cols="12" sm="4">
+        <v-card style="width: 70%" class="px-2 ma-2" color="#26c6da" dark>
           <v-card-title color="#26c6da">
             <v-list color="#26c6da">
               <v-list-item link :to="post.id">
@@ -41,10 +35,12 @@
 
               <v-row align="center" justify="end">
                 <v-btn class="ma-2" tile outlined color="pink">
-                  <v-icon left>mdi-heart</v-icon>{{post.likeCount}}
+                  <v-icon left>mdi-heart</v-icon>
+                  {{post.likeCount}}
                 </v-btn>
                 <v-btn class="ma-2" tile outlined color="success">
-                  <v-icon left>mdi-comment</v-icon>{{post.commentCount}}
+                  <v-icon left>mdi-comment</v-icon>
+                  {{post.commentCount}}
                 </v-btn>
               </v-row>
             </v-list-item>
