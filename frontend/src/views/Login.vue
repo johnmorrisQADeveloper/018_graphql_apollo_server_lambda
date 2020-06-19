@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { LOGIN_USER_MUTATION } from '../constants/graphql'
+import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'Login',
   data: () => ({
@@ -19,25 +19,17 @@ export default {
     password: ''
   }),
   methods: {
-    async loginUser () {
-      const { username, password } = this.$data
-      const res = await this.$apollo.mutate({
-        mutation: LOGIN_USER_MUTATION,
-        variables: {
-          username,
-          password
-        }
-      })
-      console.log(JSON.stringify(res.data, null, 1))
-      this.userdetails.email = res.data.login.email
-      this.userdetails.token = res.data.login.token
-      this.userdetails.username = res.data.login.username
-      this.userdetails.createdAt = res.data.login.createdAt
-      this.$router.push('/')
-    },
+    ...mapActions(['fetchUserDetails']),
     async submit () {
-      await this.loginUser()
+      await this.fetchUserDetails({
+        username: this.username,
+        password: this.password
+      })
+      this.$router.push('/')
     }
+  },
+  computed: {
+    ...mapGetters(['getUserDetails'])
   }
 }
 </script>
