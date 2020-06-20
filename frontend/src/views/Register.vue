@@ -9,13 +9,13 @@
       <v-btn :disabled="!valid" color="success" class="mr-4" @click="submit">SUBMIT</v-btn>
     </v-form>
     <div v-show="!show">
-      {{userdetails}}
+      {{getUserDetails}}
     </div>
   </v-app>
 </template>
 
 <script>
-import { CREATE_USER_MUTATION } from '../constants/graphql'
+import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'Register',
   data: () => ({
@@ -28,37 +28,27 @@ export default {
     show: true
   }),
   methods: {
+    ...mapActions(['registerUser']),
     reset () {
       this.username = ''
       this.password = ''
       this.confirmPassword = ''
       this.email = ''
     },
-    async createUser () {
-      const { username, password, confirmPassword, email } = this.$data
-      const res = await this.$apollo.mutate({
-        mutation: CREATE_USER_MUTATION,
-        variables: {
-          username,
-          password,
-          confirmPassword,
-          email
-        }
-      })
-      this.userdetails.email = res.data.register.email
-      this.userdetails.token = res.data.register.token
-      this.userdetails.username = res.data.register.username
-      this.userdetails.createdAt = res.data.register.createdAt
-      this.show = false
-      this.$router.push('/')
-    },
     async submit () {
-      await this.createUser()
+      await this.registerUser({
+        username: this.username,
+        password: this.password,
+        confirmPassword: this.confirmPassword,
+        email: this.email
+      })
+      this.show = !this.show
+      // this.$router.push('/')
       this.reset()
     }
+  },
+  computed: {
+    ...mapGetters(['getUserDetails'])
   }
 }
 </script>
-
-<style scoped>
-</style>
