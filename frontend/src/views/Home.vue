@@ -1,17 +1,24 @@
 <template>
   <div class="home">
+    <post-form-vue v-if="loggedIn"></post-form-vue>
     <posts-vue></posts-vue>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
+import { mapGetters } from 'vuex'
+
 import PostsVue from '../components/Posts.vue'
+import PostFormVue from '../components/PostForm.vue'
 
 export default {
   name: 'Home',
   components: {
-    PostsVue
+    PostsVue,
+    PostFormVue
+  },
+  computed: {
+    ...mapGetters(['loggedIn'])
   }
 }
 </script>
