@@ -1,5 +1,5 @@
 import graphqlClient from '../../utils/apolloClient'
-import { ALL_POSTS_QUERY, LOGIN_USER_MUTATION, CREATE_USER_MUTATION } from '../../constants/graphql'
+import { ALL_POSTS_QUERY, LOGIN_USER_MUTATION, CREATE_USER_MUTATION, CREATE_POST_MUTATION } from '../../constants/graphql'
 
 const state = {
   posts: [],
@@ -30,6 +30,10 @@ const actions = {
         password
       }
     })
+    commit('SET_USER_DETAILS', '')
+    commit('SET_TOKEN_ON_LOCAL_STORAGE', '')
+    commit('SET_TOKEN', '')
+
     commit('SET_USER_DETAILS', response.data)
     commit('SET_TOKEN_ON_LOCAL_STORAGE', response.data.login.token)
     commit('SET_TOKEN', response.data.login.token)
@@ -53,6 +57,18 @@ const actions = {
     commit('SET_USER_DETAILS', '')
     commit('SET_TOKEN_ON_LOCAL_STORAGE', '')
     commit('SET_TOKEN', '')
+  },
+  async createPost ({ commit }, args) {
+    const { body } = args
+    console.log(` ${body} vuex createpost fn`)
+    console.log('I am in vuex createpost fn')
+    const response = await graphqlClient.mutate({
+      mutation: CREATE_POST_MUTATION,
+      variables: {
+        body
+      }
+    })
+    commit('SET_POSTS', response.data)
   }
 }
 

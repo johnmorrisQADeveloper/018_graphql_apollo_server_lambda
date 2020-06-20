@@ -39,3 +39,15 @@ export const LOGIN_USER_MUTATION = gql`
      }
   }
 `
+
+export const CREATE_POST_MUTATION = gql`
+  mutation (
+    $body: String!) 
+    {
+    createPost(
+      body: $body
+    ){
+      id body createdAt username
+     }
+  }
+`
