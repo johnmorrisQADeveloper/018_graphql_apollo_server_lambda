@@ -13,6 +13,7 @@ export default {
     ...mapActions(['logoutUser']),
     async submit () {
       await this.logoutUser()
+      this.$router.push('/')
     }
   },
   computed: {
