@@ -10,7 +10,7 @@ const state = {
 const getters = {
   getPosts: (state) => state.posts,
   getUserDetails: (state) => state.userDetails,
-  loggedIn: (state) => state.token
+  loggedIn: (state) => state.token !== ''
 }
 
 const actions = {
@@ -48,6 +48,11 @@ const actions = {
     commit('SET_USER_DETAILS', response.data)
     commit('SET_TOKEN_ON_LOCAL_STORAGE', response.data.register.token)
     commit('SET_TOKEN', response.data.register.token)
+  },
+  async logoutUser ({ commit }, args) {
+    commit('SET_USER_DETAILS', '')
+    commit('SET_TOKEN_ON_LOCAL_STORAGE', '')
+    commit('SET_TOKEN', '')
   }
 }
 
