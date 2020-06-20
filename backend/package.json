@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "lint": "npx eslint *.js ./*/*.js --fix",
-    "samlocal": "sam local start-api --template-file template.yaml" 
+    "dev": "sam local start-api --template-file template.yaml" 
   },
   "dependencies": {
     "apollo-server-lambda": "^2.14.5",
