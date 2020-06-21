@@ -22,12 +22,6 @@
           <span class="font-weight-light">Posts</span>
         </span>
         <v-spacer></v-spacer>
-        <span v-if="loggedIn" class="title ml-3 mr-5">
-          {{Object.keys(getUserDetails).length > 0 ? getUserDetails.login.username: ''}}&nbsp;
-          <span
-            class="font-weight-light"
-          >loggedIn</span>
-        </span>
       </v-app-bar>
 
       <v-main>
