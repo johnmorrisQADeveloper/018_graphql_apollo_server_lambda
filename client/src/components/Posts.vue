@@ -5,11 +5,19 @@
     </v-row>
     <v-row class="d-flex align-center">
       <v-card style="width: 30%" class="px-4 ma-2" color="#26c6da" dark v-for="(post, index) in getPosts" :key="index">
-        <v-card-title>
-          <v-icon large left>mdi-twitter</v-icon>
-          <span class="title font-weight-light">{{ dateSince(post.createdAt) }}</span>
+          <v-card-title color="#086972" class="rounded-xl">
+            <v-list color="#01a9b4">
+              <v-list-item link :to="post.id">
+                <v-list-item-action>
+                  <v-icon>mdi-twitter</v-icon>
+                </v-list-item-action>
+                <v-list-item-content>
+                  <v-list-item-title>{{ dateSince(post.createdAt) }}</v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+            </v-list>
         </v-card-title>
-        <v-card-text class="headline font-weight-bold">{{post.body}}</v-card-text>
+        <v-card-text link :to="post.id" class="headline font-weight-bold">{{post.body}}</v-card-text>
 
         <v-card-actions>
           <v-list-item class="grow">
