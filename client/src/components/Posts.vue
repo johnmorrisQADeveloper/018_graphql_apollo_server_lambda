@@ -1,10 +1,10 @@
 <template>
-  <v-container class="grey lighten-5">
+  <v-container class="pink lighten-5">
     <v-row>
       <h4>Recent Posts</h4>
     </v-row>
-    <v-row>
-      <v-card style="width: 30%" class="px-2 ma-2" color="#26c6da" dark v-for="(post, index) in getPosts" :key="index">
+    <v-row class="d-flex align-center">
+      <v-card style="width: 30%" class="px-4 ma-2" color="#26c6da" dark v-for="(post, index) in getPosts" :key="index">
         <v-card-title>
           <v-icon large left>mdi-twitter</v-icon>
           <span class="title font-weight-light">{{ dateSince(post.createdAt) }}</span>
@@ -16,7 +16,7 @@
             <v-list-item-avatar color="grey darken-3">
               <v-img
                 class="elevation-6"
-                src="https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Prescription02&hairColor=Black&facialHairType=Blank&clotheType=Hoodie&clotheColor=White&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Default&skinColor=Light"
+                src=""
               ></v-img>
             </v-list-item-avatar>
 
