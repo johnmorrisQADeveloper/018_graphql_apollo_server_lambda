@@ -1,6 +1,6 @@
 <template>
   <v-app id="inspire">
-    <v-card class="mx-auto" style="width: 65%;">
+    <v-card class="mx-auto" style="width: 50%;">
       <v-toolbar color="deep-purple accent-4" cards dark flat>
         <v-btn icon>
           <v-icon>mdi-arrow-left</v-icon>
