@@ -75,6 +75,7 @@ export default {
           email
         }
       })
+      this.$router.push('/')
     }
   }
 }
