@@ -3,6 +3,7 @@
     <v-row>
       <h4>Recent Posts</h4>
     </v-row>
+    <div v-if="$apollo.loading">Loading...</div>
     <v-row class="d-flex align-center">
       <v-card
         style="width: 30%"
@@ -76,6 +77,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-</style>
