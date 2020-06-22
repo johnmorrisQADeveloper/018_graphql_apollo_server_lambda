@@ -22,6 +22,9 @@
           <span class="font-weight-light">Posts</span>
         </span>
         <v-spacer></v-spacer>
+        <span class="title ml-3 mr-5">
+          {{Object.keys(getUserInfo).length > 0 ? getUserInfo.login.username: ''}}
+        </span>
       </v-app-bar>
 
       <v-main>
@@ -37,9 +40,13 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'App',
   components: {},
+  created () {
+    localStorage.setItem('token', '')
+  },
   data: () => ({
     drawer: null,
     items: [
@@ -69,6 +76,9 @@ export default {
         link: '/about'
       }
     ]
-  })
+  }),
+  computed: {
+    ...mapGetters(['getUserInfo'])
+  }
 }
 </script>

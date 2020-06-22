@@ -16,6 +16,7 @@
           label="Password"
           style="min-height: 96px"
           type="password"
+          autocomplete="on"
         ></v-text-field>
       </v-form>
       <v-divider></v-divider>
@@ -36,6 +37,7 @@
 
 <script>
 import { LOGIN_USER_MUTATION } from '../constants/graphql'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'Login',
@@ -46,15 +48,18 @@ export default {
     password: ''
   }),
   methods: {
-    login () {
+    ...mapActions(['setUserInfo']),
+    async login () {
       const { username, password } = this.$data
-      this.$apollo.mutate({
+      const res = await this.$apollo.mutate({
         mutation: LOGIN_USER_MUTATION,
         variables: {
           username,
           password
         }
       })
+      await this.setUserInfo(res.data)
+      console.log(res.data)
       this.$router.push('/')
     }
   }
